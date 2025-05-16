@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIH</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <style>
         /* --- CSS from previous response --- */
         @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
@@ -975,6 +979,15 @@
                 <h3 style="text-align: center; margin-bottom: 20px;">استكشف الأقسام</h3>
                  <div class="carousel-container intro-carousel-container" id="introCarousel"> <button class="carousel-btn prev" aria-label="Previous section">&#10094;</button>
                       <div class="carousel">
+                           <div class="carousel-slide">
+                                <a href="https://pihsmart.github.io/Smart_Home_Calculator/" target="_blank" class="intro-nav-link">
+                                    <div class="intro-slide-content">
+                                        <i class="fas fa-calculator intro-icon"></i>
+                                        <div class="slide-subtitle">حاسبة سعر المنزل الذكي</div>
+                                        <p style="font-size: 0.9em; margin-top: 5px;">هل تتساءل عن تكلفة تحويل منزلك إلى منزل ذكي؟ احصل على تقدير فوري الآن!</p>
+                                    </div>
+                                </a>
+                           </div>
                            <div class="carousel-slide active">
                                 <a href="#lighting" class="intro-nav-link">
                                      <div class="intro-slide-content">
@@ -1628,11 +1641,13 @@
 
             navLinkItems.forEach(link => {
                 link.addEventListener('click', (event) => {
+                    // For internal links, close the menu if it's active
                     if (link.getAttribute('href').startsWith('#') && navLinks.classList.contains('active')) {
                          navLinks.classList.remove('active');
                         // document.body.style.overflow = 'auto'; // Restore scroll if locked
                     }
-                    // Smooth scroll is handled by CSS 'scroll-behavior: smooth;' on <html>
+                    // For external links (like the calculator), the new tab behavior is default.
+                    // If the menu should close for external links too, it's already covered by the document click listener.
                 });
             });
 
