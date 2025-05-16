@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- CSS from previous response --- */
+        @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
+
+        :root {
+          --primary-light: #63e2d1;
+          --primary-medium: #4fb3a9;
+          --primary-dark: #378f85;
+          --accent: #297d72;
+          --black: #333333;
+          --white: #ffffff;
+          --gray-light: #f5f5f5;
+          --gray-medium: #e0e0e0;
+          --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Almarai', sans-serif;
+        }
+
+        html { /* Apply smooth scroll to the whole page */
+             scroll-behavior: smooth;
+        }
+
+        body {
+          background: linear-gradient(-45deg, #63e2d1, #4fb3a9, #378f85, #297d72);
+          background-size: 400% 400%;
+          animation: gradientBG 10s ease infinite;
+          color: var(--black);
+          direction: rtl;
+        }
+
+        @keyframes gradientBG {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        /* --- Navigation --- */
+        .main-nav {
+         position: relative;
+         height: 60px;
+         background-color: rgba(255, 255, 255, 0.9);
+         box-shadow: 0 2px 5px var(--shadow);
+        }
+
+        .burger-icon {
+             position: fixed;
+             top: 15px;
+             left: 15px;
+             right: auto;
+             font-size: 30px;
+             cursor: pointer;
+             background: none;
+             border: none;
+             z-index: 1001;
+             color: var(--primary-dark);
+             padding: 5px;
+        }
+
+        .main-nav-links {
+             display: none;
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 250px;
+             height: 100%;
+             background-color: var(--primary-dark);
+             box-shadow: 2px 0px 10px var(--shadow);
+             z-index: 1000;
+             padding-top: 60px;
+             transition: transform 0.3s ease-in-out;
+             transform: translateX(-100%);
+             overflow-y: auto;
+        }
+
+        .main-nav-links.active {
+             display: block;
+             transform: translateX(0);
+        }
+
+        .main-nav-links ul {
+             list-style: none;
+             padding: 0;
+             margin: 0;
+        }
+
+        .main-nav-links a {
+             display: block;
+             color: var(--white);
+             text-decoration: none;
+             font-weight: 700;
+             padding: 15px 20px;
+             border-bottom: 1px solid var(--primary-medium);
+             transition: background-color 0.3s;
+        }
+
+        .main-nav-links a:hover {
+             background-color: var(--primary-medium);
+        }
+        /* --- End Navigation --- */
+
+        /* --- Vertical Scroll & Sections --- */
+        .vertical-scroll {
+          padding-top: 60px;
+        }
+
+        .section {
+          padding: 60px 20px;
+          background-color: rgba(255, 255, 255, 0.95);
+          margin-bottom: 20px;
+          border-bottom: 1px solid var(--gray-medium);
+            position: relative;
+            scroll-margin-top: 60px;
+        }
+         .section:last-child {
+             border-bottom: none;
+             margin-bottom: 0;
+         }
+
+        .section h2 {
+          font-size: 2rem;
+          color: var(--primary-dark);
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .section h3 {
+          margin-top: 25px;
+          margin-bottom: 15px;
+          font-size: 1.4rem;
+          color: var(--accent);
+        }
+         .feature-card h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+         }
+         /* Add h4 styling if needed */
+         .section h4 {
+            color: var(--primary-dark); /* Or var(--accent) */
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 1.15rem; /* Adjust size */
+            font-weight: 700;
+         }
+         .intercom-card h4, .voice-device-card h4 { /* More specific */
+             color: var(--accent);
+             font-size: 1.1em;
+             margin-bottom: 10px;
+         }
+
+
+        .section ul {
+          list-style: none;
+          margin-top: 10px;
+            padding-right: 0;
+        }
+
+        .section ul li {
+          margin: 8px 0;
+          font-size: 1rem;
+        }
+         /* Ensure list within list has proper padding */
+         .section ul ul {
+             margin-top: 5px;
+             padding-right: 20px; /* Indent nested list */
+         }
+
+        .highlight {
+          margin-top: 30px;
+          font-weight: bold;
+          font-size: 1.1rem;
+          color: var(--primary-medium);
+          background-color: #e7f3fe;
+          padding: 15px;
+          border-radius: 8px;
+          border-right: 4px solid #2196F3;
+          border-left: none;
+        }
+        /* --- End Vertical Scroll & Sections --- */
+
+        /* --- Introduction Section --- */
+        .intro-gif-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-top: 10px;
+        }
+        .intro-gif-container img {
+            max-width: 80%;
+            height: auto;
+            max-height: 150px;
+            border-radius: 8px;
+        }
+        .intro-text {
+            text-align: center;
+            line-height: 1.8;
+        }
+         .intro-text h2 {
+              font-size: 2.2rem;
+              color: var(--primary-dark);
+              margin-bottom: 15px;
+         }
+         .intro-text p {
+              font-size: 1.1rem;
+              margin-bottom: 15px;
+               color: var(--black);
+         }
+         .intro-text .explore-prompt {
+               font-weight: 700;
+               font-size: 1.2rem;
+               color: var(--accent);
+               margin-top: 25px;
+         }
+         .intro-text ul {
+             display: inline-block;
+             text-align: right;
+             margin-top: 20px;
+             padding: 0;
+             list-style: none;
+         }
+         .intro-text ul li {
+             margin-bottom: 12px;
+             font-size: 1.05rem;
+         }
+          .intro-text ul li i {
+              margin-left: 10px;
+              color: var(--primary-medium);
+              width: 20px;
+              display: inline-block;
+          }
+         .intro-text .start-prompt {
+             margin-top: 30px;
+             font-size: 1.2rem;
+             font-weight: bold;
+             color: var(--primary-dark);
+         }
+
+         .intro-carousel-container .carousel {
+             height: 250px;
+         }
+          .intro-carousel-container .carousel-slide a {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-decoration: none;
+              color: inherit;
+              height: 100%;
+              padding: 15px;
+              transition: background-color 0.3s;
+              cursor: pointer;
+          }
+           .intro-carousel-container .carousel-slide a:hover {
+               background-color: rgba(0,0,0, 0.03);
+               border-radius: 8px;
+           }
+
+          .intro-icon {
+              font-size: 4rem;
+              color: var(--primary-dark);
+              margin-bottom: 15px;
+          }
+           .slide-subtitle {
+               font-size: 1.3rem;
+               font-weight: 700;
+               color: var(--accent);
+               text-align: center;
+           }
+        /* --- End Introduction Section --- */
+
+
+        /* --- Feature Card & Grids --- */
+        .feature-card {
+          background: var(--white);
+          border-radius: 12px;
+          padding: 25px;
+          margin-bottom: 25px;
+          box-shadow: 0 5px 15px var(--shadow);
+          transition: transform 0.3s, box-shadow 0.3s;
+          border: 1px solid var(--gray-medium);
+        }
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 25px;
+          margin: 30px 0;
+        }
+         .feature-item { }
+        .feature-icon {
+          font-size: 2rem;
+          margin-bottom: 10px;
+          color: var(--primary-dark);
+        }
+        /* --- End Feature Card & Grids --- */
+
+
+        /* --- Lists Styling --- */
+        /* Base list reset */
+        .list, .check-list, .dot-list, .info-list, .note-list, .control-list, .icon-list, .warning-list, .integration-list {
+            list-style: none;
+            padding-right: 0; /* Reset padding for RTL */
+            margin-top: 10px;
+        }
+
+        /* General list item spacing */
+        .list li, .check-list li, .dot-list li, .info-list li, .note-list li, .control-list li, .icon-list li, .warning-list li, .integration-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 1rem;
+            padding-right: 25px; /* Default space for icon/bullet */
+            position: relative;
+        }
+
+        /* Specific list types */
+        .check-list li::before {
+            content: "✓";
+            color: var(--primary-medium);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+            top: 2px;
+            font-size: 1.1em;
+        }
+        .dot-list li::before {
+            content: "✖️"; /* Use a better bullet if desired */
+            color: var(--primary-medium);
+            position: absolute;
+            right: 5px; /* Adjust position */
+            top: 5px;  /* Adjust position */
+            font-size: 0.8em;
+        }
+         /* Lists using Font Awesome icons */
+        .info-list i, .note-list i, .control-list i, .icon-list i, .warning-list i {
+            position: absolute;
+            right: 0;
+            top: 4px; /* Adjust vertical alignment */
+            width: 20px;
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 1em; /* Ensure consistent icon size */
+         }
+          .note-list i { color: #2196F3; } /* Example color for note icons */
+          .warning-list i { color: #ff9900; }
+          .control-list i { color: var(--accent); }
+          .icon-list i { color: var(--primary-dark); }
+
+         /* Lists needing flex alignment (like control list) */
+         .control-list li, .icon-list li, .warning-list li /* If they need alignment */ {
+           display: flex;
+           align-items: center;
+           padding-right: 0; /* Override default padding */
+           gap: 10px; /* Space between icon and text */
+         }
+         .control-list i, .icon-list i, .warning-list i /* Reset position when using flex */ {
+             position: static; /* Remove absolute positioning */
+             width: auto; /* Allow natural width */
+         }
+
+        .integration-list {
+             padding-right: 20px; /* Indent nested list */
+             margin: 5px 0 0 0;
+         }
+         .integration-list li {
+             padding-right: 15px;
+             font-style: italic;
+             color: #555;
+             margin-bottom: 5px;
+         }
+         .integration-list li::before {
+             content: "•";
+             position: absolute;
+             right: 0;
+             color: var(--primary-medium);
+             font-size: 1.2em;
+             top: -2px;
+         }
+         /* Special styling for note-list icons if needed */
+          .note-list li {
+             padding-right: 30px; /* Ensure space */
+          }
+          .note-list li i {
+              color: #1e88e5; /* Example blue color for notes */
+              /* Ensure font-awesome class is used e.g., fas fa-thumbtack */
+          }
+          /* Correcting the note-list HTML to use <i> tags if needed */
+          /* e.g., <li><i class="fas fa-thumbtack"></i> البرمجة من المهندس</li> */
+
+          /* Specific styling for simple numbered icons in features grid */
+         .features-grid .feature-icon {
+             font-size: 1.5rem; /* Adjust size */
+             font-weight: bold;
+             color: var(--primary-dark);
+             margin-bottom: 10px;
+             display: inline-block;
+             width: 30px;
+             height: 30px;
+             line-height: 30px;
+             text-align: center;
+             background-color: var(--gray-light);
+             border-radius: 50%;
+             border: 1px solid var(--gray-medium);
+         }
+
+        /* --- End Lists Styling --- */
+
+
+        /* --- Main Carousel (Single Image Slider) --- */
+        .carousel-container {
+          position: relative;
+          width: 90%;
+          max-width: 700px;
+          margin: 30px auto;
+          overflow: hidden;
+            border-radius: 12px;
+             background-color: var(--gray-light);
+             padding: 10px;
+               box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .carousel-slide {
+             display: none;
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             text-align: center;
+               animation: fadeEffect 0.5s ease-in-out;
+               overflow: hidden;
+        }
+
+        .carousel-slide.active {
+             display: block;
+        }
+        @keyframes fadeEffect {
+             from {opacity: .4}
+             to {opacity: 1}
+        }
+
+        .carousel img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: 8px;
+        }
+
+        .carousel-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(50, 50, 50, 0.6);
+          border: none;
+          font-size: 2rem;
+          color: var(--white);
+          cursor: pointer;
+          padding: 10px 15px;
+          border-radius: 50%;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+          z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-btn:hover {
+          background-color: var(--primary-dark);
+        }
+
+        .carousel-btn.prev {
+          right: 15px;
+          left: auto;
+        }
+
+        .carousel-btn.next {
+          left: 15px;
+          right: auto;
+        }
+        /* --- End Main Carousel --- */
+
+
+        /* --- Mini Carousel (NOW LIKE MAIN CAROUSEL) --- */
+        .mini-carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow);
+            width: 100%;
+             margin-top: 15px;
+             background-color: var(--gray-light); /* Use lighter background */
+             padding: 10px;
+             height: 180px; /* Increased height slightly */
+        }
+
+        .mini-carousel {
+             position: relative;
+             width: 100%;
+             height: 100%;
+        }
+
+        .mini-carousel-slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            animation: fadeEffect 0.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        .mini-carousel-slide.active {
+            display: block;
+        }
+
+        .mini-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+            background-color: var(--white);
+        }
+
+        .mini-carousel-container .carousel-btn {
+             font-size: 1.5rem;
+             padding: 5px 10px;
+             background-color: rgba(50, 50, 50, 0.5);
+        }
+        .mini-carousel-container .carousel-btn.prev {
+             right: 10px;
+             left: auto;
+        }
+        .mini-carousel-container .carousel-btn.next {
+             left: 10px;
+             right: auto;
+        }
+        /* --- End Mini Carousel --- */
+
+
+        /* --- Boiler Section --- */
+        .boiler-header {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          align-items: center;
+          margin: 30px 0;
+        }
+        .boiler-intro { flex: 1; min-width: 300px; }
+        .boiler-image { flex: 1; min-width: 300px; text-align: center; }
+
+        .featured-image {
+          max-width: 100%;
+          height: auto;
+          border-radius: 12px;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+          max-height: 350px;
+            display: block;
+             margin: 15px auto;
+        }
+        .featured-video {
+             max-width: 100%;
+             height: auto;
+             border-radius: 12px;
+             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+             display: block;
+             margin: 15px auto;
+        }
+
+        .specs-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 25px;
+          margin: 40px 0;
+        }
+
+        .specs-card {
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 12px;
+          padding: 25px;
+          box-shadow: 0 4px 12px var(--shadow);
+          border-top: 4px solid var(--primary-medium);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .specs-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .specs-icon {
+          font-size: 2.2rem;
+          color: var(--primary-dark);
+          margin-bottom: 15px;
+        }
+
+        .notes-box {
+          background: #fff8e6;
+          border-right: 4px solid #ffcc00;
+          border-left: none;
+          padding: 20px;
+          border-radius: 8px;
+          margin: 30px 0;
+        }
+
+        .benefits-box {
+          background: var(--gray-light);
+          padding: 25px;
+          border-radius: 12px;
+          margin-top: 40px;
+        }
+
+        .benefits-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 25px;
+          margin-top: 20px;
+        }
+
+        .benefit-item {
+          text-align: center;
+          padding: 20px;
+          background: white;
+          border-radius: 8px;
+            box-shadow: 0 3px 8px var(--shadow);
+             transition: transform 0.3s;
+        }
+        .benefit-item:hover {
+             transform: translateY(-5px);
+        }
+
+        .benefit-item i {
+          font-size: 2.5rem;
+          color: var(--primary-dark);
+          margin-bottom: 15px;
+        }
+        /* --- End Boiler Section --- */
+
+
+        /* --- Sensors Section --- */
+        .sensor-list {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+          margin-top: 30px;
+        }
+
+        .sensor-item {
+           /* Inherits from feature-card */
+        }
+         .sensor-item h3 {
+              margin-bottom: 10px;
+              color: var(--primary-dark);
+         }
+        .sensor-info {
+            margin-bottom: 15px;
+            min-height: 80px; /* Ensure minimum height for text before carousel */
+        }
+        /* --- End Sensors Section --- */
+
+
+        /* --- Intercom Section --- */
+        .intercom-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 30px;
+          margin-top: 30px;
+        }
+
+        .intercom-card {
+           /* Inherits from feature-card */
+        }
+
+        .intercom-details {
+             margin-bottom: 20px;
+             min-height: 150px; /* Ensure min-height before image/carousel */
+        }
+
+         .intercom-card h3 {
+              margin-bottom: 10px;
+              color: var(--primary-dark);
+         }
+        .intercom-image {
+          text-align: center;
+          margin-top: 15px;
+        }
+        .intercom-card .featured-image {
+          max-width: 80%;
+          height: auto;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px var(--shadow);
+            margin-bottom: 0;
+        }
+        /* --- End Intercom Section --- */
+
+
+        /* --- Voice Control Section --- */
+        .voice-devices {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 30px;
+          margin-top: 30px;
+        }
+
+        .voice-device-card {
+           /* Inherits from feature-card */
+        }
+
+         .voice-device-card h3 {
+              margin-bottom: 10px;
+              color: var(--primary-dark);
+         }
+        .voice-device-details {
+             margin-bottom: 15px;
+             min-height: 180px; /* Min height before media */
+        }
+
+        .voice-device-media {
+            text-align: center;
+            margin-top: 15px;
+        }
+         .voice-device-card .featured-image {
+              max-width: 60%;
+              height: auto;
+              max-height: 200px;
+              object-fit: contain;
+         }
+         .voice-device-card .featured-video {
+              max-width: 100%;
+              height: auto;
+         }
+
+        .usage-list {
+             list-style: none;
+             padding: 0;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+             gap: 10px;
+             margin-top: 15px;
+        }
+        .usage-list li {
+             background: #f0f9ff;
+             padding: 8px 10px;
+             text-align: center;
+             border-radius: 6px;
+             font-size: 0.9rem;
+             color: var(--accent);
+             border: 1px solid #b3e5fc;
+             font-weight: 500;
+        }
+
+        .system-features .check-list { }
+
+        .voice-commands {
+          display: grid;
+          gap: 1rem;
+          margin-top: 20px;
+        }
+        .command {
+          background: #e8f5e9;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          border-right: 4px solid var(--primary-medium);
+          border-left: none;
+          margin: 0;
+          font-weight: 500;
+          color: #333;
+          transition: all 0.2s ease;
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 1.05em;
+        }
+        .command:hover {
+          background: #c8e6c9;
+          transform: translateX(-5px);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .command span {
+             font-family: 'Almarai', sans-serif;
+             font-style: italic;
+             color: #555;
+             font-size: 0.9em;
+             margin-right: 10px;
+        }
+        /* --- End Voice Control Section --- */
+
+          /* --- App Section --- */
+          .app-buttons {
+               margin-top: 20px;
+               text-align: center;
+          }
+          .app-buttons a {
+               display: inline-block;
+               margin: 0 10px;
+          }
+          .app-buttons img {
+               height: 50px; /* Adjust size */
+               width: auto;
+               transition: transform 0.2s;
+          }
+          .app-buttons img:hover {
+               transform: scale(1.05);
+          }
+           .app-qr-code {
+             max-width: 180px !important;
+             height: auto;
+             display: block;
+             margin: 20px auto;
+             border: 5px solid var(--white);
+             box-shadow: 0 4px 10px var(--shadow);
+          }
+          /* --- End App Section --- */
+
+        /* --- Footer --- */
+        footer {
+          background-color: rgba(55, 143, 133, 0.8);
+          text-align: center;
+          padding: 25px 0;
+          font-size: 1rem;
+          color: var(--white);
+          margin-top: 40px;
+        }
+        .social-links {
+            margin-top: 15px;
+            margin-bottom: 15px; /* Added margin below */
+        }
+        .social-links a {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0 12px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+        /* Footer copyright link */
+        footer a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        footer a:hover {
+            color: var(--primary-light);
+        }
+        /* --- End Footer --- */
+
+        /* --- Tip Box (Curtains Section) --- */
+        .tip-box {
+            background: #e3f2fd; /* Light blue background */
+            border-right: 4px solid #2196F3; /* Blue border */
+            border-left: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px; /* Space above */
+        }
+        .tip-box p {
+            margin: 0;
+            color: #1e88e5; /* Darker blue text */
+            font-size: 1rem;
+        }
+        .tip-box strong {
+            color: #1565c0; /* Even darker blue for emphasis */
+        }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+          .container { padding: 0 15px; }
+          .section h2 { font-size: 1.8rem; }
+          .section h3 { font-size: 1.3rem; }
+           .section h4 { font-size: 1.1rem; }
+            .intro-text h2 { font-size: 1.9rem; }
+            .intro-icon { font-size: 3rem; }
+            .slide-subtitle { font-size: 1.1rem; }
+            .intro-carousel-container .carousel { height: 220px; }
+            .intro-gif-container img { max-height: 120px; }
+
+          .features-grid, .specs-grid, .benefits-grid, .sensor-list, .intercom-options, .voice-devices {
+             grid-template-columns: 1fr;
+              gap: 20px;
+          }
+
+          .main-nav-links { width: 200px; }
+
+             .carousel-container { width: 95%; }
+             .intro-carousel-container .carousel { height: 220px !important; }
+             .carousel:not(.intro-carousel-container .carousel) { height: 300px; }
+
+            .carousel-btn { font-size: 1.5rem; padding: 8px 12px; }
+
+            .mini-carousel-container { height: 160px; } /* Adjusted height */
+            .mini-carousel-container .carousel-btn { font-size: 1.3rem; padding: 4px 8px; }
+            .mini-carousel-container .carousel-btn.prev { right: 8px; }
+            .mini-carousel-container .carousel-btn.next { left: 8px; }
+
+            .featured-image { max-height: 250px; }
+            .featured-video { max-height: 300px; } /* Limit video height */
+
+            .command { font-size: 1em; padding: 0.8rem 1rem;}
+             .command span { font-size: 0.85em; margin-right: 5px;}
+
+            .app-buttons img { height: 40px; }
+            .app-qr-code { max-width: 150px !important;}
+
+            .voice-device-card .featured-image { max-width: 50%; max-height: 150px;}
+             .voice-device-details { min-height: auto; } /* Remove min height on mobile */
+             .intercom-details { min-height: auto; }
+             .sensor-info { min-height: auto; }
+
+
+             .social-links a { font-size: 1.6rem; margin: 0 10px; }
+             footer { font-size: 0.9rem; }
+        }
+        /* --- End Responsive Design --- */
+
+    </style>
+</head>
+<body>
+
+<nav class="main-nav" id="mainNav">
+    <button class="burger-icon" id="burgerMenuBtn" aria-label="Toggle navigation">☰</button>
+    <div class="main-nav-links" id="mainNavLinks">
+        <ul>
+             <li><a href="#introduction" class="intro-nav-link">الرئيسية</a></li>
+            <li><a href="#lighting" class="intro-nav-link">الإضاءة الذكية</a></li>
+            <li><a href="#curtains" class="intro-nav-link">الستائر الذكية</a></li>
+            <li><a href="#boiler" class="intro-nav-link">الغلاية الذكية</a></li>
+            <li><a href="#sensors" class="intro-nav-link">الحساسات</a></li>
+            <li><a href="#intercom" class="intro-nav-link">الإنتركم</a></li>
+            <li><a href="#voice" class="intro-nav-link">التحكم الصوتي</a></li>
+            <li><a href="#app" class="intro-nav-link">تطبيق الهاتف</a></li>
+            </ul>
+    </div>
+</nav>
+
+<main class="vertical-scroll">
+
+    <section id="introduction" class="section">
+        <div class="container">
+             <div class="feature-card intro-gif-container">
+                <img src="P I H.gif" alt="PIH Animation">
+             </div>
+
+            <div class="feature-card intro-text">
+                 <h2>مرحباً بك في صفحتنا التفاعلية! ✨</h2>
+                <p>هنا يمكنك استكشاف <strong>منتجات نظام PIH</strong> بطريقة سهلة وسريعة.</p>
+                <p>اختر أي قسم يهمك من القائمة، وانطلق مباشرةً إلى التفاصيل!</p>
+                <p class="explore-prompt">👇 تصفح حسب اهتمامك:</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 style="text-align: center; margin-bottom: 20px;">استكشف الأقسام</h3>
+                 <div class="carousel-container intro-carousel-container" id="introCarousel"> <button class="carousel-btn prev" aria-label="Previous section">&#10094;</button>
+                      <div class="carousel">
+                           <div class="carousel-slide active">
+                                <a href="#lighting" class="intro-nav-link">
+                                     <div class="intro-slide-content">
+                                          <i class="fas fa-lightbulb intro-icon"></i>
+                                          <div class="slide-subtitle">الإضاءة الذكية</div>
+                                          <p style="font-size: 0.9em; margin-top: 5px;">تحكم بإضاءة منزلك بلمسة أو عن بعد!</p>
+                                     </div>
+                                </a>
+                           </div>
+                           <div class="carousel-slide">
+                               <a href="#curtains" class="intro-nav-link">
+                                   <div class="intro-slide-content">
+                                       <i class="fas fa-window-maximize intro-icon"></i>
+                                       <div class="slide-subtitle">الستائر الذكية</div>
+                                       <p style="font-size: 0.9em; margin-top: 5px;">افتح أو أغلق الستائر تلقائياً أو بصوتك!</p>
+                                   </div>
+                               </a>
+                           </div>
+                           <div class="carousel-slide">
+                               <a href="#boiler" class="intro-nav-link">
+                                   <div class="intro-slide-content">
+                                       <i class="fas fa-temperature-high intro-icon"></i> <div class="slide-subtitle">الغلاية الذكية</div>
+                                       <p style="font-size: 0.9em; margin-top: 5px;">اضبط حرارة الماء في أي وقت ومن أي مكان.</p>
+                                   </div>
+                               </a>
+                           </div>
+                           <div class="carousel-slide">
+                               <a href="#sensors" class="intro-nav-link">
+                                   <div class="intro-slide-content">
+                                       <i class="fas fa-wifi intro-icon"></i> <div class="slide-subtitle">الحساسات</div>
+                                       <p style="font-size: 0.9em; margin-top: 5px;">راقب الحركة، الحرارة، الرطوبة والمزيد.</p>
+                                   </div>
+                               </a>
+                           </div>
+                           <div class="carousel-slide">
+                                <a href="#intercom" class="intro-nav-link">
+                                     <div class="intro-slide-content">
+                                          <i class="fas fa-door-open intro-icon"></i>
+                                          <div class="slide-subtitle">الإنتركم الذكي</div>
+                                           <p style="font-size: 0.9em; margin-top: 5px;">تواصل مع زوارك عبر الهاتف أو الكاميرا.</p>
+                                     </div>
+                                </a>
+                           </div>
+                           <div class="carousel-slide">
+                                <a href="#voice" class="intro-nav-link">
+                                     <div class="intro-slide-content">
+                                          <i class="fas fa-microphone-alt intro-icon"></i>
+                                          <div class="slide-subtitle">التحكم الصوتي</div>
+                                           <p style="font-size: 0.9em; margin-top: 5px;">تحكم بكل الأجهزة باستخدام صوتك.</p>
+                                     </div>
+                                </a>
+                           </div>
+                           <div class="carousel-slide">
+                                <a href="#app" class="intro-nav-link">
+                                     <div class="intro-slide-content">
+                                          <i class="fas fa-mobile-alt intro-icon"></i>
+                                          <div class="slide-subtitle">تطبيق الهاتف</div>
+                                           <p style="font-size: 0.9em; margin-top: 5px;">إدارة كاملة للنظام عبر تطبيق الهاتف!</p>
+                                     </div>
+                                </a>
+                           </div>
+                      </div>
+                      <button class="carousel-btn next" aria-label="Next section">&#10095;</button>
+                 </div>
+                 <p class="start-prompt" style="text-align:center; margin-top: 25px;">🚀 اختر أي قسم أعلاه وابدأ رحلة التحكم الذكي!</p>
+             </div>
+        </div>
+    </section>
+
+    <section id="lighting" class="section">
+        <div class="container">
+            <h2>💡 مفاتيح الإضاءة الذكية</h2>
+
+            <div class="features-grid">
+                <div class="feature-card feature-item">
+                    <h3>✨ المفاتيح المتوفرة:</h3>
+                    <ul class="check-list">
+                        <li>مفتاح مفرد</li>
+                        <li>مفتاح مزدوج</li>
+                        <li>مفتاح ثلاثي</li>
+                        <li>مفتاح رباعي</li>
+                    </ul>
+                </div>
+                <div class="feature-card feature-item">
+                    <h3>🎨 الألوان المتاحة:</h3>
+                     <ul class="dot-list"> <li><i class="fas fa-circle" style="color: #fff; border: 1px solid #ccc; border-radius: 50%;"></i> أبيض</li>
+                        <li><i class="fas fa-circle" style="color: #000;"></i> أسود</li>
+                    </ul>
+                </div>
+                <div class="feature-card feature-item">
+                    <h3>⚙️ طريقة العمل والتوصيل:</h3>
+                     <ul class="icon-list"> <li><i class="fas fa-hand-point-up"></i> تعمل باللمس</li>
+                         <li><i class="fas fa-plug"></i> تحتاج نيوترال (Neutral)</li>
+                         <li><i class="fas fa-exchange-alt"></i> تدعم الفكسل (لاسلكياً)</li>
+                     </ul>
+                </div>
+                 <div class="feature-card feature-item">
+                     <h3>🔧 ملاحظات فنية:</h3>
+                     <ul class="icon-list"> <li><i class="fas fa-hard-hat"></i> البرمجة من المهندس</li>
+                         <li><i class="fas fa-lightbulb"></i> متوافقة مع المصابيح</li>
+                         <li><i class="fas fa-shield-alt"></i> توصيل آمن</li>
+                     </ul>
+                 </div>
+            </div>
+
+             <div class="feature-card">
+                 <p class="highlight">🚀 اختر المفتاح المناسب لك واستمتع بتجربة إضاءة ذكية!</p>
+                  <div class="carousel-container" id="lightingCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                      <div class="carousel">
+                          <div class="carousel-slide active"><img src="1.png" alt="مفتاح 1" /></div>
+                          <div class="carousel-slide"><img src="2.png" alt="مفتاح 2" /></div>
+                          <div class="carousel-slide"><img src="3.png" alt="مفتاح 3" /></div>
+                          <div class="carousel-slide"><img src="4.png" alt="مفتاح 4" /></div>
+                          <div class="carousel-slide"><img src="5.png" alt="مفتاح 5" /></div>
+                          <div class="carousel-slide"><img src="6.png" alt="مفتاح 6" /></div>
+                          <div class="carousel-slide"><img src="7.png" alt="مفتاح 7" /></div>
+                          <div class="carousel-slide"><img src="8.png" alt="مفتاح 8" /></div>
+                      </div>
+                      <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curtains" class="section">
+        <div class="container">
+              <h2>🪟 مفاتيح التحكم بالستائر الكهربائية (الأبجور)</h2>
+             <div class="features-grid">
+                  <div class="feature-card feature-item">
+                       <div class="feature-icon">1️⃣</div>
+                       <h3>مفتاح أبجور مفرد</h3>
+                       <ul class="list">
+                            <li>للتحكم بستارة واحدة</li>
+                            <li>مثالي للغرف الفردية</li>
+                       </ul>
+                  </div>
+                  <div class="feature-card feature-item">
+                       <div class="feature-icon">2️⃣</div>
+                       <h3>مفتاح أبجور مزدوج</h3>
+                       <ul class="list">
+                            <li>للتحكم بستارتين منفصلتين</li>
+                            <li>للنوافذ المزدوجة</li>
+                       </ul>
+                  </div>
+                  <div class="feature-card feature-item">
+                       <div class="feature-icon">3️⃣💡</div>
+                       <h3>مفتاح أبجور مع إضاءة</h3>
+                       <ul class="list">
+                            <li>تحكم بالستائر والإضاءة</li>
+                            <li>تحكم متكامل</li>
+                       </ul>
+                  </div>
+             </div>
+             <div class="feature-card">
+                 <h3>⚙️ مميزات النظام:</h3>
+                 <ul class="check-list">
+                     <li>تحكم سلس</li>
+                     <li>تحكم عن بعد بالتطبيق</li>
+                     <li>دمج مع المنزل الذكي</li>
+                     <li>تصميم أنيق</li>
+                     <li>برمجة وضعيات (مثل 50%)</li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <h3>🎛️ خيارات التحكم:</h3>
+                 <ul class="control-list"> <li><i class="fas fa-hand-pointer"></i> لمسي مباشر</li>
+                     <li><i class="fas fa-microphone"></i> تحكم صوتي</li>
+                     <li><i class="fas fa-clock"></i> جدولة زمنية</li>
+                     <li><i class="fas fa-mobile-alt"></i> تحكم عن بعد</li>
+                 </ul>
+             </div>
+             <div class="feature-card tip-box"> <p>💡 <strong>نصيحة:</strong> يمكنك برمجة الستائر للفتح مع شروق الشمس أو الإغلاق عند الغروب!</p>
+             </div>
+             <div class="feature-card">
+                 <h3>صور مفاتيح الستائر</h3>
+                  <div class="carousel-container" id="curtainsCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                      <div class="carousel">
+                          <div class="carousel-slide active"><img src="9.png" alt="مفتاح ستائر 1" /></div>
+                          <div class="carousel-slide"><img src="10.png" alt="مفتاح ستائر 2" /></div>
+                          <div class="carousel-slide"><img src="11.png" alt="مفتاح ستائر 3" /></div>
+                          <div class="carousel-slide"><img src="12.png" alt="مفتاح ستائر 4" /></div>
+                      </div>
+                      <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="boiler" class="section">
+        <div class="container">
+              <h2>♨️ مفاتيح التحكم بغلاية المياه (البويلر)</h2>
+             <div class="feature-card boiler-header">
+                  <div class="boiler-intro">
+                     <h3>✨ مواصفات المفتاح:</h3>
+                     <ul class="icon-list"> <li><i class="fas fa-box-open"></i> <strong>تصميم مستقل</strong></li>
+                         <li><i class="fas fa-tablet-alt"></i> <strong>واجهة لمس ذكية</strong></li>
+                         <li><i class="fas fa-ruler-combined"></i> <strong>مقاس قياسي</strong></li>
+                     </ul>
+                  </div>
+                  <div class="boiler-image">
+                       <img src="15.png" alt="مفتاح تحكم الغلاية الذكي" class="featured-image">
+                  </div>
+             </div>
+             <div class="specs-grid">
+                 <div class="specs-card">
+                     <div class="specs-icon"><i class="fas fa-cogs"></i></div>
+                     <h3>⚙️ طريقة العمل:</h3>
+                     <ul class="check-list">
+                         <li>تحكم تشغيل/إيقاف</li>
+                         <li>ضبط جدول زمني</li>
+                         <li>مراقبة استهلاك</li>
+                         <li>إشعارات أعطال</li>
+                     </ul>
+                 </div>
+                 <div class="specs-card">
+                     <div class="specs-icon"><i class="fas fa-plug"></i></div>
+                     <h3>🔌 متطلبات التوصيل:</h3>
+                     <ul class="check-list">
+                         <li>يحتاج نيوترال (Neutral)</li>
+                         <li>متوافق مع الغلايات</li>
+                         <li>توصيل آمن</li>
+                     </ul>
+                 </div>
+                 <div class="specs-card">
+                     <div class="specs-icon"><i class="fas fa-mobile-alt"></i></div>
+                     <h3>📲 التحكم الذكي:</h3>
+                     <ul class="check-list">
+                         <li><strong>تطبيق الهاتف</strong></li>
+                         <li><strong>أوامر صوتية</strong></li>
+                         <li><strong>مشاهدات ذكية</strong></li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="feature-card notes-box">
+                 <h3>⚠️ ملاحظات هامة:</h3>
+                  <ul class="warning-list"> <li><i class="fas fa-tools"></i> تركيب فني مختص</li>
+                     <li><i class="fas fa-bolt"></i> غلايات حتى 4000 واط</li>
+                     <li><i class="fas fa-tint-slash"></i> مقاوم للرطوبة (IP44)</li>
+                 </ul>
+             </div>
+             <div class="feature-card benefits-box">
+                 <h3><i class="fas fa-lightbulb"></i> لماذا تختار مفتاح البويلر الذكي؟</h3>
+                 <div class="benefits-grid">
+                      <div class="benefit-item">
+                           <i class="fas fa-coins"></i>
+                           <p>توفير طاقة</p>
+                      </div>
+                      <div class="benefit-item">
+                           <i class="fas fa-couch"></i>
+                           <p>راحة عند السفر</p>
+                      </div>
+                      <div class="benefit-item">
+                           <i class="fas fa-shield-alt"></i>
+                           <p>حماية من الأعطال</p>
+                      </div>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <section id="sensors" class="section">
+        <div class="container">
+              <h2>🛡️ أنظمة الحساسات الذكية</h2>
+              <div class="sensor-list">
+                   <div class="feature-card sensor-item">
+                       <div class="sensor-info">
+                           <h3><i class="fas fa-wind"></i> 1️⃣ حساس الغاز</h3> <ul class="list">
+                               <li>كشف تسرب الغاز</li>
+                               <li>إنذار فوري وإشعار</li>
+                               <li>ربط بقطع التيار</li>
+                           </ul>
+                       </div>
+                       <div class="mini-carousel-container" id="gasSensorCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <div class="mini-carousel">
+                                <div class="mini-carousel-slide active"><img src="16.png" alt="حساس الغاز 1" /></div>
+                                <div class="mini-carousel-slide"><img src="17.png" alt="حساس الغاز 2" /></div>
+                            </div>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                   </div>
+                   <div class="feature-card sensor-item">
+                       <div class="sensor-info">
+                            <h3><i class="fas fa-running"></i> 2️⃣ حساس الحركة</h3> <ul class="list">
+                               <li>كشف 180° / 8م</li>
+                               <li>للأمن والإضاءة</li>
+                               <li>تمييز البشر</li>
+                           </ul>
+                       </div>
+                       <div class="mini-carousel-container" id="motionSensorCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <div class="mini-carousel">
+                                <div class="mini-carousel-slide active"><img src="18.png" alt="حساس الحركة 1" /></div>
+                                <div class="mini-carousel-slide"><img src="19.png" alt="حساس الحركة 2" /></div>
+                            </div>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                   </div>
+                    <div class="feature-card sensor-item">
+                        <div class="sensor-info">
+                            <h3><i class="fas fa-eye"></i> 3️⃣ حساس التواجد</h3> <ul class="list">
+                                <li>أشعة تحت حمراء</li>
+                                <li>يكشف أدق الحركات</li>
+                                <li>للمستشفيات/المكاتب</li>
+                            </ul>
+                        </div>
+                        <div class="mini-carousel-container" id="presenceSensorCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <div class="mini-carousel">
+                                <div class="mini-carousel-slide active"><img src="20.png" alt="حساس التواجد 1" /></div>
+                                <div class="mini-carousel-slide"><img src="21.png" alt="حساس التواجد 2" /></div>
+                            </div>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                    </div>
+                   <div class="feature-card sensor-item">
+                        <div class="sensor-info">
+                             <h3><i class="fas fa-door-closed"></i> 4️⃣ حساس الأبواب/النوافذ</h3> <ul class="list">
+                                 <li>مغناطيسي لاسلكي</li>
+                                 <li>إشعارات فتح/غلق</li>
+                                 <li>تاريخ الحركات</li>
+                             </ul>
+                        </div>
+                         <div class="mini-carousel-container" id="doorSensorCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <div class="mini-carousel">
+                                <div class="mini-carousel-slide active"><img src="22.png" alt="حساس الأبواب والنوافذ 1" /></div>
+                                <div class="mini-carousel-slide"><img src="23.png" alt="حساس الأبواب والنوافذ 2" /></div>
+                            </div>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                   </div>
+                   <div class="feature-card sensor-item">
+                         <div class="sensor-info">
+                              <h3><i class="fas fa-thermometer-half"></i> 5️⃣ حساس الحرارة/الرطوبة</h3> <ul class="list">
+                                  <li>مراقبة حرارة/رطوبة</li>
+                                  <li>قياس دقيق</li>
+                                  <li>إنذار تجاوز الحدود</li>
+                              </ul>
+                         </div>
+                          <div class="mini-carousel-container" id="tempSensorCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                             <div class="mini-carousel">
+                                 <div class="mini-carousel-slide active"><img src="24.png" alt="حساس الحرارة والرطوبة 1" /></div>
+                                 <div class="mini-carousel-slide"><img src="25.png" alt="حساس الحرارة والرطوبة 2" /></div>
+                             </div>
+                             <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                         </div>
+                    </div>
+              </div>
+              <div class="feature-card">
+                  <h3>⚡ مميزات الحساسات الذكية:</h3>
+                  <ul class="check-list">
+                      <li><strong>تشغيل تلقائي</strong> للأنظمة</li>
+                      <li><strong>تكامل كامل</strong> مع المنزل الذكي</li>
+                      <li><strong>بطارية تدوم سنوات</strong> (لاسلكي)</li>
+                      <li><strong>مقاومة للعوامل الجوية</strong> (خارجي)</li>
+                  </ul>
+              </div>
+              <div class="feature-card">
+                  <h3>🏠 تطبيقات عملية:</h3>
+                   <ul class="icon-list"> <li><i class="fas fa-utensils"></i> <strong>المطبخ:</strong> غاز + حرارة</li>
+                      <li><i class="fas fa-shoe-prints"></i> <strong>المدخل:</strong> حركة + باب</li>
+                      <li><i class="fas fa-bed"></i> <strong>غرف النوم:</strong> تواجد + حرارة</li>
+                      <li><i class="fas fa-border-style"></i> <strong>النوافذ:</strong> مغناطيسي + رطوبة</li>
+                  </ul>
+              </div>
+              <div class="feature-card">
+                  <p class="highlight">💡 نظام متكامل للحماية والراحة! يمكنك ربط جميع الحساسات مع:</p>
+                   <ul class="icon-list"> <li><i class="fas fa-bell"></i> نظام الإنذار</li>
+                      <li><i class="fas fa-video"></i> الكاميرات الأمنية</li>
+                      <li><i class="fas fa-lightbulb"></i> الإضاءة الذكية</li>
+                      <li><i class="fas fa-fan"></i> التكييف والتهوية</li>
+                  </ul>
+              </div>
+        </div>
+    </section>
+
+    <section id="intercom" class="section">
+        <div class="container">
+              <h2>🏡🔊 نظام الإنتركم الذكي</h2>
+             <div class="intercom-options">
+                 <div class="feature-card intercom-card">
+                     <div class="intercom-details">
+                          <h3><i class="fas fa-network-wired"></i> 1️⃣ الإنتركم السلكي</h3> <h4>مواصفات النظام:</h4>
+                         <ul class="list">
+                             <li>اتصال ثابت بالكابلات</li>
+                             <li>جودة صوت وصورة عالية</li>
+                             <li>مناسب للمباني الجديدة</li>
+                         </ul>
+                         <h4>مميزات:</h4>
+                         <ul class="check-list">
+                             <li><strong>استقرار فائق</strong></li>
+                             <li><strong>عمر تشغيلي طويل</strong></li>
+                             <li><strong>أمان ضد التشويش</strong></li>
+                             <li>يدعم شاشات متعددة</li>
+                         </ul>
+                         <h4>نطاق التطبيق:</h4>
+                          <ul class="icon-list"> <li><i class="fas fa-home"></i> الفلل الكبيرة</li>
+                             <li><i class="fas fa-building"></i> المجمعات السكنية</li>
+                             <li><i class="fas fa-store"></i> المباني التجارية</li>
+                         </ul>
+                     </div>
+                     <div class="intercom-image">
+                          <img src="30.jpeg" alt="الإنتركم السلكي" class="featured-image">
+                     </div>
+                 </div>
+                 <div class="feature-card intercom-card">
+                     <div class="intercom-details">
+                          <h3><i class="fas fa-wifi"></i> 2️⃣ الإنتركم اللاسلكي</h3> <h4>مواصفات النظام:</h4>
+                         <ul class="list">
+                             <li>اتصال WiFi/لاسلكي</li>
+                             <li>تركيب سريع وسهل</li>
+                             <li>مثالي للمباني القائمة</li>
+                         </ul>
+                         <h4>مميزات:</h4>
+                         <ul class="check-list">
+                             <li><strong>مرونة بالتثبيت</strong></li>
+                             <li>دعم كاميرات IP</li>
+                             <li>تكامل مع المنزل الذكي</li>
+                             <li>تحديثات عن بعد</li>
+                         </ul>
+                         <h4>نطاق التطبيق:</h4>
+                          <ul class="icon-list"> <li><i class="far fa-building"></i> الشقق الجاهزة</li>
+                             <li><i class="fas fa-paint-roller"></i> التجديدات</li>
+                             <li><i class="fas fa-landmark"></i> المباني التاريخية</li>
+                         </ul>
+                     </div>
+                      <div class="mini-carousel-container" id="wirelessIntercomCarousel"> <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                          <div class="mini-carousel">
+                              <div class="mini-carousel-slide active"><img src="26.png" alt="الإنتركم اللاسلكي 1" /></div>
+                              <div class="mini-carousel-slide"><img src="27.png" alt="الإنتركم اللاسلكي 2" /></div>
+                              <div class="mini-carousel-slide"><img src="28.png" alt="الإنتركم اللاسلكي 3" /></div>
+                              <div class="mini-carousel-slide"><img src="29.png" alt="الإنتركم اللاسلكي 4" /></div>
+                          </div>
+                          <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                      </div>
+                 </div>
+             </div>
+             <div class="feature-card">
+                 <h3>🌟 مميزات مشتركة لكلا النظامين:</h3>
+                 <ul class="check-list">
+                     <li><strong>تحكم عبر الهاتف</strong> 📱</li>
+                     <li><strong>فتح الباب عن بعد</strong> 🔓</li>
+                     <li><strong>تسجيل فيديو وصوت</strong> 📹</li>
+                     <li><strong>دعم اتصال متعدد</strong> 👨‍👩‍👧‍👦</li>
+                     <li><strong>تكامل مع أنظمة الأمن</strong> 🛡️</li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <h3>⚙️ خيارات إضافية:</h3>
+                  <ul class="icon-list"> <li><i class="fas fa-arrows-alt-h"></i> كاميرا بان/تيلت (180°)</li>
+                     <li><i class="fas fa-moon"></i> رؤية ليلية (10 متر)</li>
+                     <li><i class="fas fa-cloud-showers-heavy"></i> مقاومة العوامل الجوية (IP66)</li>
+                     <li><i class="fas fa-desktop"></i> شاشات لمس</li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <p class="highlight">💡 نظام متكامل للأمان والراحة! رؤية الزوار، تسجيل الأحداث، التحكم بالدخول.</p>
+             </div>
+        </div>
+    </section>
+
+    <section id="voice" class="section">
+        <div class="container">
+              <h2>🎙️✨ نظام التحكم الصوتي الذكي</h2>
+              <div class="voice-devices">
+                   <div class="feature-card voice-device-card">
+                       <div class="voice-device-details">
+                            <h3><i class="fab fa-amazon"></i> 1️⃣ Amazon Echo Pop</h3> <h4>التصميم:</h4>
+                           <p>شكل نصف كروي مدمج</p>
+                           <h4>المميزات:</h4>
+                           <ul class="check-list">
+                               <li><strong>صوت واضح</strong></li>
+                               <li>7 ميكروفونات</li>
+                               <li>دعم العربية</li>
+                               <li>تكامل سلس</li>
+                               <li>إضاءة LED</li>
+                           </ul>
+                            <h4>الاستخدام الأمثل:</h4>
+                           <ul class="usage-list">
+                               <li>غرف النوم</li>
+                               <li>المكاتب</li>
+                               <li>المطابخ</li>
+                               <li>مساحات صغيرة</li>
+                           </ul>
+                       </div>
+                        <div class="voice-device-media">
+                           <img src="32.jpg" alt="Amazon Echo Pop" class="featured-image">
+                       </div>
+                   </div>
+                   <div class="feature-card voice-device-card">
+                       <div class="voice-device-details">
+                            <h3><i class="fab fa-amazon"></i> 2️⃣ Amazon Echo Show</h3> <h4>التصميم:</h4>
+                           <p>شاشة ذكية مع مكبرات صوت</p>
+                           <h4>المميزات:</h4>
+                           <ul class="check-list">
+                               <li><strong>شاشة لمس</strong></li>
+                               <li>كاميرا للمكالمات</li>
+                               <li>عرض المعلومات</li>
+                               <li><strong>تحكم مرئي</strong></li>
+                               <li>مشغل وسائط</li>
+                           </ul>
+                            <h4>الاستخدام الأمثل:</h4>
+                           <ul class="usage-list">
+                               <li>غرف المعيشة</li>
+                               <li>المطابخ الكبيرة</li>
+                               <li>المداخل</li>
+                               <li>المكاتب</li>
+                           </ul>
+                       </div>
+                        <div class="voice-device-media">
+                           <img src="33.webp" alt="Amazon Echo Show" class="featured-image">
+                       </div>
+                   </div>
+              </div>
+             <div class="feature-card system-features">
+                 <h3>⚡ ما يمكنك فعله بنظام التحكم الصوتي:</h3>
+                 <ul class="check-list">
+                     <li><strong>التحكم الكامل</strong> بالأجهزة</li>
+                     <li><strong>ضبط المشاهدات</strong></li>
+                     <li><strong>الاستعلام</strong> عن الحالة</li>
+                     <li><strong>الجدولة</strong> التلقائية</li>
+                     <li>التكامل مع:
+                          <ul class="integration-list">
+                              <li>أنظمة الأمان</li>
+                              <li>أنظمة الترفيه</li>
+                              <li>أنظمة الراحة</li>
+                          </ul>
+                     </li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <h3>🔊 تجربة استخدام متقدمة:</h3>
+                 <div class="voice-commands">
+                     <p class="command">"أليكسا، أشغل الإضاءة في غرفة المعيشة"</p>
+                     <p class="command">"أليكسا، افتح ستائر النافذة الرئيسية"</p>
+                     <p class="command">"أليكسا، ما هي درجة حرارة المنزل؟"</p>
+                     <p class="command">"أليكسا، شغل وضع السينما" <span>(إطفاء الإضاءة وتشغيل التلفزيون)</span></p>
+                 </div>
+             </div>
+             <div class="feature-card">
+                 <h3>💡 لماذا تختار نظام التحكم الصوتي؟</h3>
+                 <ul class="check-list">
+                     <li><strong>سهولة الاستخدام</strong></li>
+                     <li><strong>تحكم متكامل</strong></li>
+                     <li><strong>واجهة بشرية</strong></li>
+                     <li><strong>تحديثات مستمرة</strong></li>
+                 </ul>
+             </div>
+              <div class="feature-card">
+                  <h3>🎬 عرض توضيحي عام:</h3>
+                  <div class="voice-device-media">
+                      <video src="31.mp4" controls class="featured-video" poster="images/video_poster.jpg"></video> </div>
+              </div>
+        </div>
+    </section>
+
+    <section id="app" class="section">
+        <div class="container">
+              <h2>📱🏠 واجهة التحكم عبر الهاتف - تطبيق Smart Life</h2>
+             <div class="feature-card">
+                 <h3>🌟 نظرة عامة:</h3>
+                  <ul class="icon-list"> <li><i class="fas fa-th-large"></i> مركز تحكم متكامل</li>
+                     <li><i class="fas fa-magic"></i> واجهة بسيطة وسهلة</li>
+                     <li><i class="fas fa-boxes"></i> إدارة جميع الأجهزة</li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <h3>🔧 الميزات الرئيسية:</h3>
+                 <ul class="check-list">
+                     <li><strong>التحكم الشامل</strong></li>
+                     <li><strong>مشاهد ذكية</strong></li>
+                     <li><strong>الجدولة التلقائية</strong></li>
+                     <li><strong>مراقبة أمنية</strong></li>
+                     <li><strong>تحكم عن بعد</strong></li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <h3>📲 مميزات تقنية:</h3>
+                  <ul class="icon-list"> <li><i class="fab fa-android"></i><i class="fab fa-apple" style="margin-right: 5px;"></i><i class="fab fa-huawei" style="margin-right: 5px;"></i> دعم المنصات</li>
+                     <li><i class="fas fa-language"></i> واجهة متعددة اللغات (عربي)</li>
+                     <li><i class="fas fa-sync-alt"></i> تحديثات دورية</li>
+                 </ul>
+              </div>
+              <div class="feature-card">
+                  <h3>🔐 الأمان:</h3>
+                  <ul class="check-list">
+                      <li>تشفير عالي للبيانات</li>
+                      <li>مصادقة متعددة</li>
+                      <li>أذونات مخصصة</li>
+                  </ul>
+              </div>
+             <div class="feature-card">
+                 <h3>🌍 التكامل مع أنظمة أخرى:</h3>
+                 <ul class="check-list">
+                     <li>دعم Alexa / Google Assistant</li>
+                     <li>تكامل مع IFTTT</li>
+                     <li>متوافق مع أنظمة الأتمتة</li>
+                 </ul>
+             </div>
+             <div class="feature-card">
+                 <h3>📱 واجهة تطبيق Smart Life</h3>
+                  <div style="text-align: center;">
+                     <img src="34.jpg" alt="واجهة تطبيق Smart Life" class="featured-image" style="max-height: 500px;" />
+                  </div>
+             </div>
+             <div class="feature-card">
+                 <h3>📥 تنزيل التطبيق بسهولة</h3>
+                 <h4>امسح الرمز أو اختر المتجر المناسب:</h4>
+                  <div style="text-align:center;">
+                       <img src="35.png" alt="رمز QR لتطبيق Smart Life" class="app-qr-code">
+                       <div class="app-buttons">
+                            <a href="https://play.google.com/store/apps/details?id=com.tuya.smartlife" target="_blank">
+                                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="تحميل من Google Play">
+                            </a>
+                            <a href="https://apps.apple.com/app/id1115101477" target="_blank">
+                                 <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="تحميل من App Store">
+                            </a>
+                       </div>
+                  </div>
+             </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="https://www.instagram.com/pih_smart/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61572959214078" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/palestine-intelligent-homes" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/972566334569" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:info@palestineintelligent.homes" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+         <p>© <script>document.write(new Date().getFullYear())</script> كل الحقوق محفوظة - Palestine Intelligent Homes | تم التطوير بواسطة <a href="https://www.palestineintelligent.homes/" target="_blank">PIH</a></p>
+    </div>
+</footer>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Navigation Menu Toggle ---
+        const burgerBtn = document.getElementById('burgerMenuBtn');
+        const navLinks = document.getElementById('mainNavLinks');
+        const navLinkItems = navLinks.querySelectorAll('a');
+
+        if (burgerBtn && navLinks) {
+            burgerBtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                navLinks.classList.toggle('active');
+                // Optional: Toggle body scroll lock
+                // document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    if (link.getAttribute('href').startsWith('#') && navLinks.classList.contains('active')) {
+                         navLinks.classList.remove('active');
+                        // document.body.style.overflow = 'auto'; // Restore scroll if locked
+                    }
+                    // Smooth scroll is handled by CSS 'scroll-behavior: smooth;' on <html>
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnBurger = burgerBtn.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                     // document.body.style.overflow = 'auto'; // Restore scroll if locked
+                }
+            });
+        }
+
+         // --- Carousel Logic ---
+         function setupCarousel(carouselContainer) {
+             // Use querySelector within the specific container passed to the function
+             const slides = carouselContainer.querySelectorAll('.carousel-slide, .mini-carousel-slide');
+             const prevBtn = carouselContainer.querySelector('.carousel-btn.prev');
+             const nextBtn = carouselContainer.querySelector('.carousel-btn.next');
+             let currentSlideIndex = 0;
+
+             function showSlide(index) {
+                 if (slides.length === 0) return; // No slides to show
+                 // Ensure index is within bounds
+                  currentSlideIndex = (index + slides.length) % slides.length;
+
+                 slides.forEach((slide, i) => {
+                     slide.classList.remove('active');
+                     if (i === currentSlideIndex) {
+                         slide.classList.add('active');
+                     }
+                 });
+             }
+
+             // Initial display
+             showSlide(currentSlideIndex);
+
+             if (prevBtn) {
+                 prevBtn.addEventListener('click', () => {
+                     showSlide(currentSlideIndex - 1);
+                 });
+             }
+
+             if (nextBtn) {
+                 nextBtn.addEventListener('click', () => {
+                     showSlide(currentSlideIndex + 1);
+                 });
+             }
+         }
+
+         // --- Initialize ALL Carousels ---
+         // Select all containers that need carousel functionality
+         const allCarouselContainers = document.querySelectorAll('.carousel-container, .mini-carousel-container');
+
+         allCarouselContainers.forEach(container => {
+             // Check if the container actually has slides before setting up
+             if (container.querySelector('.carousel-slide, .mini-carousel-slide')) {
+                 setupCarousel(container);
+             }
+         });
+
+    });
+</script>
+
+</body>
+</html>
